@@ -106,24 +106,25 @@
 			  }
 			}	  
 		}
+NodeList lList = doc.getElementsByTagName("input-point");
+		
+		System.out.println("----------------------------");
 
-		 Element docEl = doc.getDocumentElement();       
-		    Node childNode = docEl.getFirstChild();     
-		    while( childNode.getNextSibling()!=null ){          
-		        childNode = childNode.getNextSibling();         
-		        if (childNode.getNodeType() == Node.ELEMENT_NODE) { 
-		        	 if(childNode.getNodeName().equals("input-source"))
-		        	 {
-		            Element childElement = (Element) childNode;             
-		            System.out.println("id : " + childElement.getAttribute("id"));
-					if(childElement.hasAttribute("label"))
-						System.out.println("label Name : " + childElement.getAttribute("label"));
-					if(childElement.hasAttribute("type"))
-						System.out.println("type : " + childElement.getAttribute("type"));
-					
-		        	 }
-		        }       
-		    }
+		for (int temp1 = 0; temp1 < lList.getLength(); temp1++) {
+
+			Node mNode = lList.item(temp1);
+			if (mNode.getNodeType() == Node.ELEMENT_NODE) {
+				System.out.println("\nCurrent Element :" + mNode.getNodeName());
+				Element mElement = (Element) mNode;
+
+				System.out.println(" id : " + mElement.getAttribute("id"));
+				if(mElement.hasAttribute("label"))
+					System.out.println("label Name : " + mElement.getAttribute("label"));
+				if(mElement.hasAttribute("type"))
+					System.out.println("type : " + mElement.getAttribute("type"));
+			}
+		}
+		
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
